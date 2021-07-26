@@ -1,0 +1,5 @@
+include LICENSE
+include README.rst
+recursive-include ezaad/static *
+recursive-include ezaad/templates *
+recursive-include docs *
