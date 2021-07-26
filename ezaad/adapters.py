@@ -16,8 +16,8 @@ from django.db.models import Prefetch
 from django.utils.functional import cached_property
 from scim2_filter_parser.attr_paths import AttrPath
 
-from app import constants
-from app.models import  User
+from ezaad import constants
+from ezaad.models import  User
 from django_scim import exceptions as scim_exceptions
 from django_scim.adapters import SCIMGroup, SCIMUser
 from django_scim.constants import SchemaURI
