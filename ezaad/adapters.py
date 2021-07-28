@@ -204,10 +204,10 @@ class SCIMUser(SCIMUser):
                 if is_new_user:
                     # Set SCIM ID to be equal to database ID. Because users are uniquely identified with this value
                     # its critical that changes to this line are well considered before executed.
-                    if str(self.obj.scim_id) != str(self.obj.id):
-                        # SCIMMixin の id property は scim_id になっているような。
-                        # 同一値で update すると UNIQUE constraint failed: app_user.scim_id になってしまう。
-                        self.obj.__class__.objects.update(scim_id=str(self.obj.id))
+                    # if str(self.obj.scim_id) != str(self.obj.id):
+                    #     # SCIMMixin の id property は scim_id になっているような。
+                    #     # 同一値で update すると UNIQUE constraint failed: app_user.scim_id になってしまう。
+                    self.obj.__class__.objects.update(scim_id=str(self.obj.id))
                 logger.info(f'User saved. User id {self.obj.id}')
         except Exception as e:
             #raise self.reformat_exception(e)
