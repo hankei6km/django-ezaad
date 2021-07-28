@@ -1,6 +1,6 @@
 # EzAAD
 
-Azure web app + scim2 で Django へログインする.
+Django へ Azure App Service + SCIM2 でログインする.
 
 ## Quick start
 
@@ -51,11 +51,11 @@ Azure web app + scim2 で Django へログインする.
     path('ezaad/', include('ezaad.urls')),
 ```
 
-1. プロジェクトを Azure Web App へデプロイする
+1. プロジェクトを Azure App Service へデプロイする
 
 1. デプロイ先へ ssh で接続し `python manage.py migrate` 実行し ezaad のモデルを作成する
 
-1. 併せて `python manage.py createsuperuser` を実行し管理者ユーザーを作成する
+1. 併せて `python manage.py createsuperuser` を実行し管理者ユーザーを作成する(できれば SCIM 用のユーザーも作成する)
 
 1. ブラウザーで `https://<youre project>.azurewebsites.net/admin/` を開き作成したユーザーでログインする
 
@@ -73,6 +73,8 @@ curl -X POST -d "grant_type=password&username=<username>&password=<password>" -u
 ### Azure 側での設定
 
 1. Azure protal で Active Director / エンタープライズアプリケーションを開き、新しいアプリケーションの「ギャラリーに見つからないその他のアプリケーションを統合します (ギャラリー以外)」を選択
+
+1. 認証パネルの認証の設定で「認証されていないアクセスを許可する」を選択(SCIM 用の接続を許可するため) 
 
 1. ユーザーとグループパネルから同期させたいユーザーを追加
 
@@ -104,6 +106,8 @@ curl -X POST -d "grant_type=password&username=<username>&password=<password>" -u
 - Access Token は手動で設定する必要がある(ギャラリーアプリにすれば解決できるらしいが未検証: https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/31744375-scim-defects)
 
 ## License
+
+[15five / django-scim2](https://github.com/15five/django-scim2) の [demo](https://github.com/15five/django-scim2/tree/master/demo) を元に作成.
 
 Copyright (c) 2021 hankei6km
 
