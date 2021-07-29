@@ -12,14 +12,12 @@ Django へ Azure App Service + SCIM2 でログインする.
     INSTALLED_APPS = [
         ...
         'oauth2_provider',
-        'corsheaders',
         'django_scim',
         'ezaad',
     ]
     MIDDLEWARE = [
         ...
         'oauth2_provider.middleware.OAuth2TokenMiddleware',
-        'corsheaders.middleware.CorsMiddleware',
         'django_scim.middleware.SCIMAuthCheckMiddleware',
     ]
     AUTHENTICATION_BACKENDS = [
@@ -40,7 +38,6 @@ Django へ Azure App Service + SCIM2 でログインする.
             },
         ],
     }
-    CORS_ORIGIN_ALLOW_ALL = True
 ```
 
 1. プロジェクトの `urls.py` の URLconf へ ezaad 等を含める
