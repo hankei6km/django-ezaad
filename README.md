@@ -18,7 +18,7 @@ Django へ Azure App Service + SCIM2 でログインする.
     MIDDLEWARE = [
         ...
         'oauth2_provider.middleware.OAuth2TokenMiddleware',
-        'django_scim.middleware.SCIMAuthCheckMiddleware',
+        'ezaad.middleware.SCIMAuthCheckMiddleware',
     ]
     AUTHENTICATION_BACKENDS = [
         # Django default backend
